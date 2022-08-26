@@ -29,6 +29,11 @@
 :echo $VIMRUNTIME
 :E  |"open current dir
 "2}}}
+"bTag=vimRunOption= {{{2
+"vim -u ~/.vimrc_perl
+"ls|vim -
+"vim -c 'ls|q'
+"2}}}
 "1}}}
 "---------- bTag=vimScripts {{{1
 "bTag=if= {{{2
