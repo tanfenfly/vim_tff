@@ -1,0 +1,244 @@
+
+
+bTag=1)https://github.com/junegunn/vim-plug
+		% git clone https://github.com/junegunn/vim-plug.git
+		% mkdir -p ~/.vim/autoload/
+		% cp vim-plug/plug.vim  ~/.vim/autoload/plug.vim
+
+bTag=2).vimrc 
+		https://github.com/junegunn/vim-plug
+		
+call plug#begin()
+Plug 'junegunn/vim-easy-align'
+call plug#end()
+	
+bTag=3)
+Reload .vimrc and :PlugInstall to install plugins.
+
+
+:PlugInstall
+
+
+bTag=4)
+
+bTag=4.0)  
+
+bTag=4.0.1)  download + configure/build/install vim src
+
+		$ git clone https://github.com/vim/vim.git
+
+
+./configure --with-features=huge \
+--enable-multibyte \
+--enable-rubyinterp=yes \
+--enable-pythoninterp=yes \
+--with-python-config-dir=/usr/lib/python2.7/config \
+--enable-python3interp=yes \
+--with-python3-config-dir=/usr/lib/python3.6/config \
+--enable-perlinterp=yes \
+--enable-luainterp=yes \
+--enable-gui=gtk2 --enable-cscope \
+--enable-fontset \
+--enable-gpm     \
+--prefix=$HOME/github/vim_tff/vim_src/vim/install_build
+
+		$ make  ;#OK=上面的配置是OK的
+		$ make install 
+bTag=4.0.2)  export new vim to ENV
+
+
+
+bTag=4.1) vim-easy-align=简单txt表格 对齐工具
+           
+bTag=4.1.1) help URL
+		https://github.com/junegunn/vim-easy-align
+bTag=4.1.2) edit .vimrc
+		Plug 'junegunn/vim-easy-align'
+
+bTag=4.1.3) install
+		:PlugInstall
+					- Finishing ... Done!     |"================================= copy from https://github.com/VundleVim/Vundle.vi
+					- vim-easy-align: 处理 delta 中: 100% (138/138), 完成.   
+
+bTag=4.1.4) check after install
+		$ egrep -nuri easy ~/.vim -l
+				~/.vim/plugged/vim-easy-align/.git/config
+bTag=4.1.5) vimMap 
+
+		" Start interactive EasyAlign in visual mode (e.g. vipga)
+		xmap ga <Plug>(EasyAlign)
+
+		" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+		nmap ga <Plug>(EasyAlign)
+
+bTag=4.1.6) usage and example
+		vipga*|        指定的表格分隔符为|
+
+		Example:
+					|xxx|  yy | 000|
+					|xxxxxxxxx|3333|000000000|
+					|33333|99999999999999999999|888888888888|
+								------> to 
+					| xxx       | yy                   | 000          |
+					| xxxxxxxxx | 3333                 | 000000000    |
+					| 33333     | 99999999999999999999 | 888888888888 |
+
+bTag=4.2) ultisnips=其为 代码片段  snippets 的  ultimate solution  终结解决方案
+
+
+           
+bTag=4.2.1) help URL
+		https://github.com/SirVer/ultisnips
+bTag=4.2.2) edit .vimrc
+		" Multiple Plug commands can be written in a single line using | separators
+		Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+bTag=4.2.3) install
+		:PlugInstall 
+bTag=4.2.4) check after install
+		$ egrep -nuri ultisnips ~/.vim -l
+				~/.vim/plugged/ultisnips/.git/config0
+		$ egrep -nuri 'vim-snippets' ~/.vim -l
+				~/.vim/plugged/vim-snippets/.git/config
+				~/.vim/plugged/vim-snippets/UltiSnips/vim.snippets + perl.snippets ....
+
+bTag=4.2.5) vimMap 
+        " Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
+        " - https://github.com/Valloric/YouCompleteMe
+        " - https://github.com/nvim-lua/completion-nvim
+        let g:UltiSnipsExpandTrigger="<tab>"
+        let g:UltiSnipsJumpForwardTrigger="<c-b>"
+        let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+        " If you want :UltiSnipsEdit to split your window.
+        let g:UltiSnipsEditSplit="vertical"
+
+
+bTag=4.2.6) usage and example
+
+		Example:
+			vim zz01.sh ;#比如输入 if ,再按 Tab 键=会自动补齐(不过没有提示)
+
+bTag=4.3) vim-easycomplete =其为1个快速的极简风格的 代码提示插件( Code Completion Plugin)
+
+
+           
+bTag=4.3.1) help URL
+		https://github.com/jayli/vim-easycomplete
+bTag=4.3.2) edit .vimrc
+		Plug 'jayli/vim-easycomplete'
+bTag=4.3.3) install
+		:PlugInstall 
+		:PlugClean   |"不用时候,删除
+bTag=4.3.4) check after install
+		$ egrep -nuri easycomplete ~/.vim -l
+				~/.vim/plugged/vim-easycomplete/.git/config
+				~/.vim/plugged/vim-easycomplete/snippets/ultisnips/cpp.snippets
+				~/.vim/plugged/vim-easycomplete/autoload/easycomplete/sources/bash.vim
+bTag=4.3.5) vimMap 
+ 
+
+
+bTag=4.3.6) usage and example
+
+		Example:
+			vim zz01.sh ;#比如输入 if ,再按 Tab 键=会自动补齐(不过没有提示)
+				#>>> 'bash-language-server' is not avilable. Do ':InstallLspServer'
+				:InstallLspServer
+				
+bTag=4.4) 其他自动补全插件=
+https://github.com/Shougo/deoplete.nvim   #requires Neovim (0.3.0+ and of course, latest is recommended) or Vim8.2.1978+ with Python 3.6.1+ and timers enabled
+YCM  #在 Cygwin 上,很难搭建=以来项更多
+https://zhuanlan.zhihu.com/p/349271041
+https://github.com/cazador481/vim_setup/blob/master/vimrc
+https://www.zhihu.com/column/c_1333587711262158848
+
+Plug 'skywind3000/vim-auto-popmenu'        |"https://github.com/skywind3000/vim-auto-popmenu
+
+bTag=4.5) skywind3000/vim-auto-popmenu =简化自动代码补齐=
+
+bTag=4.6) 
+https://github.com/SinghCoder/Icarus_Verilog
+
+
+bTag=5) 自己编写 popmenu=
+echo &complete
+$ cat perl.dict
+		if
+		while2
+		while3
+		while
+		__LINE__
+		__FUNC__
+
+:help  ins-completion
+setlocal dictionary+=perl.dict
+echo &dictionary
+echo &tags
+
+:abbreviate
+:reg |:marks | :map | :tags | : echo taglist("xxx.*")
+:function         | :scriptnames         | :autocmd
+:verbose function | :verbose scriptnames | :verbose autocmd
+:verbose set history?   |"list variable history where defined
+
+
+:ls  | :buffers
+:set | :let
+
+:cexpr execute('scriptnames')
+cexpr execute('function')
+
+au!
+au CursorMovedI <buffer> nested call feedkeys("\<c-n>", 'n')
+au CursorMovedI <buffer> nested call <SNR>34_xx_feed_popup()
+au CursorMovedI <buffer> nested call s:xx_feed_popup()
+
+<SNR>34_xx_feed_popup()
+
+
+./plugged/vim-snippets/UltiSnips/perl.snippets
+bTag=
+
+let dict = []
+
+
+au CursorMovedI <buffer> normal iX
+au CursorMovedI <buffer> nested normal iYZ
+au CursorMovedI <buffer> normal iYZ
+
+au CompleteDone <buffer> normal iX
+
+
+au CursorMovedI <buffer> nested call feedkeys("\<c-n>", 'n')
+
+
+au TextChangedI <buffer> normal iYZ
+au TextChangedI <buffer> nested normal iAB
+
+au TextChanged <buffer> normal iYZ
+au TextChanged <buffer> nested normal iYZ
+
+function! s:feed_popup()
+if expand('<cword>')
+
+\(\k\{3,}\)$
+echo matchlist(expand('<cword>'),'\(\k\{3,}\)$')
+matchlist(a:context, '\(\k\{' . g:apc_min_length . ',}\)$')
+
+" autocmd for CursorMovedI
+function! s:feed_popup()
+	let matches = matchlist(expand('<cword>'),'\(\k\{3,}\)$')
+
+	if pumvisible()
+
+		if empty(matches)
+			silent! call feedkeys("\<c-e>", 'n')
+			return 0
+		endif
+	elseif empty(matches)
+		return 0
+	else
+		silent! call feedkeys("\<c-n>", 'n')
+		return 0
+	endif
+endfunc
