@@ -392,8 +392,15 @@ ls | vim -
 "str1=$(tee); echo "${str1}"
 "2}}}
 "1}}}
+"---------- bTag=othes FIX ME Later {{{1
 
+function! CleverTab()
+	if strpart(getline('.'),0,col('.')-1)
+		return "\<Tab>"
+	else
+		return "\<C-N>"
+	endif
+endfunction
+inoremap <Tab> <C-R>=CleverTab()<CR>
 
-
-
-
+"1}}}
